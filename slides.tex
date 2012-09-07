@@ -1,0 +1,107 @@
+\documentclass[12pt]{beamer}
+\author{Yan Wang}
+\title{Paper Reading Seminar}
+\subtitle{}
+\usetheme{Malmoe}
+\setbeamertemplate{navigation symbols}{}
+\newcommand*\oldmacro{}%
+\let\oldmacro\insertshorttitle%
+\renewcommand*\insertshorttitle{%
+\oldmacro\hfill%
+\insertframenumber\,/\,\inserttotalframenumber}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+\begin{frame}{Measuring the objectness of image windows}
+    \begin{itemize}
+        \item Motivation
+        \begin{itemize}
+            \item [Fig. Motivation]
+            \item Hand-crafted model $\Rightarrow$ different from conventional ``detectors''
+        \end{itemize}
+        \item Applications
+        \begin{itemize}
+            \item Preprocessing for detection
+            \item Visualization of classifier
+            \item Foreground/background separation?
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Approach}
+    \begin{itemize}
+        \item Intuition: an object should have...
+        \begin{itemize}
+            \item A well defined closed boundary in space
+            \item A different appearance from its surroundings
+            \item Sometimes unique within the image (salient)
+        \end{itemize}
+        \item Bayesian fusion of the cues
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Approach}
+    \begin{itemize}
+        \item Multi-scale saliency
+        \begin{itemize}
+            \item Spectral residual of FFT in multiple scales
+            \item Measure the uniqueness of the window within the image
+        \end{itemize}
+        \item [Fig.2]
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Approach}
+    \begin{itemize}
+        \item Color contrast
+        \begin{itemize}
+            \item Dissimilarity of a window to its immediate surrounding area
+            \item Chi-square distance between LAB histogram
+            \item Scores a whole window as whether it contains an entire project
+        \end{itemize}
+        \item [Fig.3]
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Approach}
+    \begin{itemize}
+        \item Edge Density
+        \begin{itemize}
+            \item Canny detector in the inner ring. Normalized with perimeter
+            \item Captures the closed boundary characteristic of objects
+        \end{itemize}
+        \item [Fig.4]
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Approach}
+    \begin{itemize}
+        \item Superpixel Straddling
+        \begin{itemize}
+            \item Superpixels shouldn't cross the bondary
+            \item Rely on over-segmentation
+        \end{itemize}
+        \item [Fig.5]
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Approach}
+    \begin{itemize}
+        \item Spatial priori
+        \begin{itemize}
+            \item Location and size
+            \item Kernel density estimation from training data
+        \end{itemize}
+        \item Bayesian fusion
+        \begin{itemize}
+            \[p(\text{obj}|C} = \frac{p(C|\text{obj}p(\text{obj})}{p(C)}\]
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\end{document}
+
