@@ -4,5 +4,4 @@ git checkout master
 rm slides.pdf
 mv s.pdf slides.pdf
 git commit -a -m 'Update slides.pdf'
-git push
 git checkout latex
