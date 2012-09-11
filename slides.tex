@@ -62,6 +62,22 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Discussions}
+    \begin{itemize}
+        \item How to train the SVM?
+        \begin{itemize}
+            \item Images $\Rightarrow$ patches $\Leftrightarrow$ SVM
+            \item When: SVMs are trained right before evaluating the information gain
+            \\ \medskip { \includegraphics[width=0.8\textwidth]{svm_train.png} \\ } 
+            \item Train with features extracted from patches, image with labels
+        \end{itemize}
+        \item How to maintain visual invariance?
+        \begin{itemize}
+            \item Decision trees are able to achieve the invariance (appeared in the training data)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Application}
     \begin{itemize}
         \item Heatmap \\
